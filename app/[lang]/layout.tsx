@@ -2,7 +2,6 @@ import type React from "react"
 import { Navbar } from "@/components/navbar"
 import { Footer } from "@/components/footer"
 import { type Locale, locales } from "@/lib/i18n/config"
-import { headers } from "next/headers"
 
 export function generateStaticParams() {
   return locales.map((lang) => ({ lang }))
@@ -15,8 +14,8 @@ export default function LocaleLayout({
   children: React.ReactNode
   params: { lang: Locale }
 }) {
-  const headersList = headers()
-  const pathname = headersList.get("x-pathname") || ""
+  // Pass empty pathname since we don't have access to it in static export
+  const pathname = ""
 
   return (
     <>

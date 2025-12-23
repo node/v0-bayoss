@@ -5,19 +5,30 @@ import { ProjectCard } from "@/components/project-card"
 import { ProjectFilter } from "@/components/project-filter"
 
 export function generateStaticParams() {
-  return locales.map((lang) => ({ lang }))
+  const types: RepoType[] = ["all", "source", "fork"]
+  const params: Array<{ lang: Locale; type?: string[] }> = []
+
+  for (const lang of locales) {
+    // Generate params for /[lang]/projects
+    params.push({ lang, type: undefined })
+    // Generate params for /[lang]/projects/[type]
+    for (const typeValue of types) {
+      params.push({ lang, type: [typeValue] })
+    }
+  }
+
+  return params
 }
 
 export interface ProjectsPageProps {
-  params: { lang: Locale }
-  searchParams: { type?: RepoType }
+  params: { lang: Locale; type?: string[] }
 }
 
-export default async function ProjectsPage({ params, searchParams }: ProjectsPageProps) {
+export default async function ProjectsPage({ params }: ProjectsPageProps) {
   const t = (key: Parameters<typeof getTranslation>[1]) => getTranslation(params.lang, key)
 
-  // Get the repo type from search params or default to 'all'
-  const repoType: RepoType = (searchParams.type as RepoType) || "all"
+  // Get repo type from dynamic route segment
+  const repoType: RepoType = (params.type?.[0] as RepoType) || "all"
 
   // Fetch projects with the selected filter
   const projects = await getOrganizationRepos("bayoss", repoType)

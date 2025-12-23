@@ -24,7 +24,7 @@ export function ProjectFilter({ currentType, locale }: ProjectFilterProps) {
       {filters.map((filter) => (
         <Button key={filter.type} variant={currentType === filter.type ? "default" : "outline"} size="sm" asChild>
           <Link
-            href={`/${locale}/projects?type=${filter.type}`}
+            href={`/${locale}/projects${filter.type === "all" ? "" : `/${filter.type}`}`}
             className={cn("min-w-[80px]", currentType === filter.type ? "pointer-events-none" : "")}
           >
             {filter.label}
