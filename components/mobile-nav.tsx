@@ -68,4 +68,3 @@ export function MobileNav({ items, locale }: MobileNavProps) {
     </>
   )
 }
-

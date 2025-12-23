@@ -34,4 +34,3 @@ export function ProjectFilter({ currentType, locale }: ProjectFilterProps) {
     </div>
   )
 }
-

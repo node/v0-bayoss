@@ -10,4 +10,3 @@ export const getLocaleFromPath = (path: string): Locale => {
   }
   return defaultLocale
 }
-

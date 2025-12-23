@@ -48,4 +48,3 @@ export default async function ProjectsPage({ params, searchParams }: ProjectsPag
     </div>
   )
 }
-

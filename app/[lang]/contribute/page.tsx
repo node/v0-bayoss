@@ -129,4 +129,3 @@ export default function ContributePage({ params }: { params: { lang: Locale } })
     </div>
   )
 }
-

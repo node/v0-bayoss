@@ -98,4 +98,3 @@ export const translations: Translations = {
 export const getTranslation = (locale: Locale, key: TranslationKey): string => {
   return translations[locale][key]
 }
-

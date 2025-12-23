@@ -50,4 +50,3 @@ export function ProjectCard({ project, locale }: ProjectCardProps) {
     </Card>
   )
 }
-

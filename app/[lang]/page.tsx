@@ -78,4 +78,3 @@ export default function HomePage({ params }: { params: { lang: Locale } }) {
     </div>
   )
 }
-

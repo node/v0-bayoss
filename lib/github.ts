@@ -36,4 +36,3 @@ export async function getOrganizationRepos(org = "bayoss", type: RepoType = "all
     return []
   }
 }
-
